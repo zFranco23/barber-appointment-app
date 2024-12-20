@@ -15,12 +15,12 @@ class Appointment(db.Model):
     # service_id: Mapped[int]
     # barber_id: Mapped[int]
     user_id: Mapped[int] = mapped_column(ForeignKey('users.id'))
-    service_id: Mapped[int] = mapped_column(ForeignKey('services.id'))
+    barbershop_id: Mapped[int] = mapped_column(ForeignKey('barbershops.id'))
 
     ## relationships
 
     # user: Mapped['User'] = relationship(back_populates="appointments")
-    service: Mapped['Service'] = relationship()
+    # service: Mapped['Service'] = relationship()
 
 
     

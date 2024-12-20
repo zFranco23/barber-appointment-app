@@ -14,7 +14,7 @@ class AppointmentSchema(Schema):
     ## nested schemas
     user = fields.Nested('UserSchema', only=('id', 'name'), dump_only=True)
     # barber = fields.Nested(BarberSchema)
-    service = fields.Nested(ServiceSchema( only=('id', 'name', 'price')),  dump_only=True)
+    service = fields.Nested(ServiceSchema( only=('id', 'name')),  dump_only=True)
 
 
 

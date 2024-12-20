@@ -15,7 +15,7 @@ class Service(db.Model):
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str]
     description: Mapped[Optional[str]]
-    price: Mapped[float]
+    # price: Mapped[float]
 
 
     
