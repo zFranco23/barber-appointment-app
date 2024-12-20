@@ -51,6 +51,15 @@ class BarbershopServiceHandler(MethodView):
         ).scalars()
 
         return barbershop_services_by_barbershop
+    
+
+    @barbershop_bp.response(201)
+    @barbershop_bp.arguments(BarbershopServiceSchema)
+    def post(self, barbershop_service, barbershop_id):
+        barbershop_service = BarbershopService(**barbershop_service)
+        barbershop_service.barbershop_id = barbershop_id
+        db.session.add(barbershop_service)
+        db.session.commit() 
 
 
 @barbershop_bp.route("/<int:barbershop_id>/payment-method")
@@ -81,16 +90,7 @@ class BarbershopPaymentMethodHandler(MethodView):
 
 
 
-@barbershop_bp.route("/service")
-class BarbershopServiceHandler(MethodView):
 
-
-    @barbershop_bp.response(201)
-    @barbershop_bp.arguments(BarbershopServiceSchema)
-    def post(self, barbershop_service):
-        barbershop_service = BarbershopService(**barbershop_service)
-        db.session.add(barbershop_service)
-        db.session.commit() 
 
 
 
